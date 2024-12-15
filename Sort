@@ -1,0 +1,55 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BubbleSort {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ввод размера массива
+        System.out.print("Введите размер массива: ");
+        int n = scanner.nextInt();
+
+        // Создание массива
+        int[] array = new int[n];
+
+        // Ввод элементов массива
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < n; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        // Сортировка массива методом пузырька
+        bubbleSort(array);
+
+        // Вывод отсортированного массива
+        System.out.println("Отсортированный массив: " + Arrays.toString(array));
+    }
+
+    // Метод сортировки пузырьком
+    private static void bubbleSort(int[] array) {
+        int n = array.length;
+        boolean swapped;
+
+        // Проход по массиву
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            // Сравнение соседних элементов
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (array[j] > array[j + 1]) {
+                    // Меняем местами элементы
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // Если не было обменов, массив уже отсортирован
+            if (!swapped) {
+                break;
+            }
+        }
+    }
+}
